@@ -10,9 +10,8 @@
     <EditText
         android:id="@+id/editTextEmail"
         android:layout_width="wrap_content"
-        android:layout_height="0dp"
-        android:layout_marginBottom="18dp"
-        android:layout_marginTop="134dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
         android:ems="10"
         android:hint="Enter your email"
         android:inputType="textEmailAddress"
@@ -36,9 +35,8 @@
     <Button
         android:id="@+id/buttonLogin"
         android:layout_width="wrap_content"
-        android:layout_height="0dp"
-        android:layout_marginBottom="15dp"
-        android:text="Log in"
+        android:layout_height="wrap_content"
+        android:text="Login"
         app:layout_constraintBottom_toTopOf="@+id/textViewSignup"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -46,14 +44,13 @@
 
     <TextView
         android:id="@+id/textViewSignup"
-        android:layout_width="196dp"
+        android:layout_width="194dp"
         android:layout_height="27dp"
-        android:layout_marginBottom="156dp"
-        android:layout_marginEnd="82dp"
-        android:text="Need an account? Sign up here!"
+        android:layout_marginBottom="8dp"
+        android:layout_marginStart="8dp"
+        android:text="Need an account? Signup here!"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.866"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/editTextPassword"
         app:layout_constraintTop_toBottomOf="@+id/buttonLogin" />
+
 </android.support.constraint.ConstraintLayout>
