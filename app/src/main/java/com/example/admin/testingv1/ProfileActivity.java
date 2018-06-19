@@ -11,6 +11,8 @@ import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class ProfileActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -41,8 +43,8 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
         calendarView.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
             @Override
             public void onSelectedDayChange(@NonNull CalendarView view, int year, int month, int dayOfMonth) {
-                String date = dayOfMonth + " " + month + " " + year;
-                Intent intent = new Intent(ProfileActivity.this, addEvent.class);
+                String date = dayOfMonth + "/" + (month + 1) + "/" + year;
+                Intent intent = new Intent(ProfileActivity.this, EventsToday.class);
                 intent.putExtra("date", date);
                 startActivity(intent);
             }

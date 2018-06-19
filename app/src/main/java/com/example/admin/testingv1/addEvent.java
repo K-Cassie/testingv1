@@ -23,12 +23,13 @@ public class addEvent extends AppCompatActivity implements View.OnClickListener 
 
     private static final String TAG = addEvent.class.getSimpleName();
     private TextView theDate;
-    private Button backToProfile;
+    private Button backToEventsToday;
     private FirebaseAuth firebaseAuth;
     private TextView startDate;
     private TextView endDate;
     private DatePickerDialog.OnDateSetListener startDateSetListener;
     private DatePickerDialog.OnDateSetListener endDateSetListener;
+    private String date;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,11 +37,11 @@ public class addEvent extends AppCompatActivity implements View.OnClickListener 
         setContentView(R.layout.activity_add_event);
 
         theDate = (TextView) findViewById(R.id.theDate);
-        backToProfile = (Button) findViewById(R.id.backToProfile);
+        backToEventsToday = (Button) findViewById(R.id.backToEventsToday);
         firebaseAuth = FirebaseAuth.getInstance();
 
         Intent incomingIntent = getIntent();
-        String date = incomingIntent.getStringExtra("date");
+        date = incomingIntent.getStringExtra("date");
 
         startDate = (TextView) findViewById(R.id.startDate);
         endDate = (TextView) findViewById(R.id.endDate);
@@ -50,7 +51,7 @@ public class addEvent extends AppCompatActivity implements View.OnClickListener 
 
         startDate.setOnClickListener(this);
         endDate.setOnClickListener(this);
-        backToProfile.setOnClickListener(this);
+        backToEventsToday.setOnClickListener(this);
 
         startDateSetListener = new DatePickerDialog.OnDateSetListener() {
             @Override
@@ -75,9 +76,11 @@ public class addEvent extends AppCompatActivity implements View.OnClickListener 
     }
 
     public void onClick(View view) {
-        if(view == backToProfile){
+        if(view == backToEventsToday){
             //will open login
-            startActivity(new Intent(this, ProfileActivity.class));
+            Intent intent = new Intent(addEvent.this, EventsToday.class);
+            intent.putExtra("date", date);
+            startActivity(intent);
         }
         if(view == startDate) {
             Calendar cal = Calendar.getInstance();
