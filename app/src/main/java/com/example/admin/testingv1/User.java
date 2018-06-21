@@ -3,12 +3,21 @@ import java.util.ArrayList;
 
 public class User {
     private ArrayList<Event> events = new ArrayList <Event>();
-    private String email;
+    private String userId;
+
+    public User(String userId) {
+        this.userId = userId;
+    }
 
     public User() {
     }
-    public User(String email) {
-        this.email = email;
+
+    public ArrayList<Event> getEvents() {
+        return events;
+    }
+
+    public String getUserId() {
+        return userId;
     }
 
     public void addEvent(Event event) {
@@ -24,4 +33,5 @@ public class User {
         events.add(editedEvent);
 
     }
+
 }

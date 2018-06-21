@@ -36,6 +36,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private FirebaseAuth firebaseAuth;
 
+    private DatabaseReference myRef;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -83,10 +84,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         if(task.isSuccessful()) {
                             Toast.makeText(MainActivity.this, "Registered Successfully!", Toast.LENGTH_SHORT).show();
                             Intent intent = new Intent(MainActivity.this, ProfileActivity.class);
-                            FirebaseDatabase database = FirebaseDatabase.getInstance();
-                            DatabaseReference myRef = database.getReference("Users");
-                            User user = new User(email);
-                            myRef.setValue(user);
+                            myRef = FirebaseDatabase.getInstance().getReference("Users");
+                            String userId = myRef.push().getKey();
+                            User user = new User(userId);
+                            myRef.child(userId).setValue(user);
                             startActivity(intent);
                         }else{
                             Toast.makeText(MainActivity.this, "Could not register, please try again.", Toast.LENGTH_SHORT).show();
