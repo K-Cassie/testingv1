@@ -179,8 +179,8 @@ public class addEvent extends AppCompatActivity implements View.OnClickListener 
         }
         if(view == addEventBtn) {
             Toast.makeText(addEvent.this, "Added Successfully!", Toast.LENGTH_SHORT).show();
-            String userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
-            eventDB = FirebaseDatabase.getInstance().getReference(userId);
+            String userId = firebaseAuth.getCurrentUser().getUid();
+            eventDB = FirebaseDatabase.getInstance().getReference().child("Users").child(userId).child("Events");
             String eventId = eventDB.push().getKey();
             String event_name = eventName.getText().toString().trim();
             String start_time = startTime.getText().toString().trim();

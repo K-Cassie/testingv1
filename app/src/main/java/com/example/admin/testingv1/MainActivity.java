@@ -85,7 +85,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                             Toast.makeText(MainActivity.this, "Registered Successfully!", Toast.LENGTH_SHORT).show();
                             Intent intent = new Intent(MainActivity.this, ProfileActivity.class);
                             myRef = FirebaseDatabase.getInstance().getReference("Users");
-                            String userId = myRef.push().getKey();
+                            String userId = firebaseAuth.getCurrentUser().getUid();
                             User user = new User(userId);
                             myRef.child(userId).setValue(user);
                             startActivity(intent);
